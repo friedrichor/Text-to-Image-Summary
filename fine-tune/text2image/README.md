@@ -53,7 +53,8 @@ sh train_text_to_image_lora.sh
 1. 由于 fine-tune 过程中并不是训练的 epoch 或 step 越多，模型效果越好，模型会在中途某一阶段效果显著下降，因此在训练过程中每 `validation_epochs` 个 epoch 就会用训练过程中的模型来进行 text-to-image generation，每个 prompt 生成 `num_validation_images` 张图像，以检查训练过程中模型的效果，以便于您保存最佳的模型。您可以根据自己需要更改 `validation_prompts.txt` 中的内容，每行为一个 prompt。
 2. `use_8bit_adam` 表示是否使用 8-bit Adam，使用 8-bit Adam 会显著降低模型训练时所需的显存大小，并且模型效果基本不会受到影响。  
 paper: [8-bit Optimizers via Block-wise Quantization](https://arxiv.org/abs/2110.02861#)  
-<center><img src="https://github.com/friedrichor/Text-to-Image-Summary/blob/main/photos_for_readme/8-bit_Adam.png" width="50%"></center> 
+
+<center><img src="https://github.com/friedrichor/Text-to-Image-Summary/blob/main/photos_for_readme/8-bit_Adam.png" width="50%"></center>  
 
 3. `report_to` 默认设置为 "tensorboard"，您可以通过在终端输入  
 ```
