@@ -54,7 +54,7 @@ sh train_text_to_image_lora.sh
 2. `use_8bit_adam` 表示是否使用 8-bit Adam，使用 8-bit Adam 会显著降低模型训练时所需的显存大小，并且模型效果基本不会受到影响。  
 paper: [8-bit Optimizers via Block-wise Quantization](https://arxiv.org/abs/2110.02861#)  
 
-<center><img src="https://github.com/friedrichor/Text-to-Image-Summary/blob/main/photos_for_readme/8-bit_Adam.png" width="50%"></center>  
+<div align=center><img src="https://github.com/friedrichor/Text-to-Image-Summary/blob/main/photos_for_readme/8-bit_Adam.png" width="50%"></div>
 
 3. `report_to` 默认设置为 "tensorboard"，您可以通过在终端输入  
 ```
