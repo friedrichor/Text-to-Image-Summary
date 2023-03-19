@@ -36,8 +36,8 @@ In a nutshell, LoRA allows adapting pretrained models by adding pairs of rank-de
 
 With LoRA, it's possible to fine-tune Stable Diffusion on a custom image-caption pair dataset on consumer GPUs like Tesla T4, Tesla V100.
 
-关于 LORA 的其他介绍，可以参考 HuggingFace 文档 https://huggingface.co/docs/diffusers/v0.14.0/en/training/lora  
-使用 LORA 训练时显存占用大大减小 (正常的 fine-tune 运行时大概需要 26G显存左右，使用 LORA 后大概只需要 8G 显存)，并且最终保存的模型也很小 (只有几M，比原先的模型大小小了几个数量级)，并且训练速度更快。
+&emsp;&emsp;关于 LORA 的其他介绍，可以参考 HuggingFace 文档 https://huggingface.co/docs/diffusers/v0.14.0/en/training/lora  
+&emsp;&emsp;使用 LORA 训练时显存占用大大减小 (正常的 fine-tune 运行时大概需要 26G显存左右，使用 LORA 后大概只需要 8G 显存)，并且最终保存的模型也很小 (只有几M，比原先的模型大小小了几个数量级)，并且训练速度更快。
 
 
 ### **Running**
@@ -59,7 +59,7 @@ paper: [8-bit Optimizers via Block-wise Quantization](https://arxiv.org/abs/2110
 ```
 tensorboard --logdir=text2image/txt2img-finetune-lora/logs
 ```
-来查看训练过程中生成的图像，其中 logdir=后面接的是您将 logs 保存的路径  
+来查看训练过程中生成的图像，其中 logdir=后面接的是您将 logs 保存的路径。   
 4. 如果您需要更改 [accelerate](https://huggingface.co/docs/accelerate/v0.16.0/en/index) 相关的设置，如更改程序运行所在的 GPU (默认device为"cuda:0")，可以在终端输入以下指令来调整:
 ```
 accelerate config
@@ -67,9 +67,9 @@ accelerate config
 
 ### **Inference**
 
-您可以通过 `inference.ipynb` 来进行 inference，训练好的模型默认保存在 `txt2img-finetune-lora/pytorch_lora_weights.bin`。  
-当然您也可以从某个 checkpoint 进行 inference，只需更改 `model_path = "txt2img-finetune-lora/checkpoint-500/pytorch_model.bin"` 即可。   
-生成的图片保存在 `results` 文件夹下。   
+&emsp;&emsp;您可以通过 `inference.ipynb` 来进行 inference，训练好的模型默认保存在 `txt2img-finetune-lora/pytorch_lora_weights.bin`。  
+&emsp;&emsp;当然您也可以从某个 checkpoint 进行 inference，只需更改 `model_path = "txt2img-finetune-lora/checkpoint-500/pytorch_model.bin"` 即可。   
+&emsp;&emsp;生成的图片保存在 `results` 文件夹下。   
 
 
 # Reference
