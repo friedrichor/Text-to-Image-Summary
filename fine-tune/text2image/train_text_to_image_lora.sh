@@ -13,13 +13,13 @@ accelerate launch --mixed_precision="fp16" /datas/kfh/finetune_sd/text2image/tra
   --num_train_epochs=100 \
   --max_train_steps=500 \
   --gradient_accumulation_steps=8 \
-  --checkpointing_steps=500 \
   --learning_rate=1e-04 \
   --lr_scheduler="constant" \
   --lr_warmup_steps=0 \
   --use_8bit_adam \
   --seed=42 \
   --output_dir=$OUTPUT_DIR \
+  --checkpointing_steps=500 \
   --validation_prompts_dir=$VALID_PROMPT_DIR \
   --num_validation_images=4 \
   --validation_epochs=50 \
