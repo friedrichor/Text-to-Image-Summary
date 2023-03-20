@@ -50,7 +50,7 @@ from diffusers.utils.import_utils import is_xformers_available
 
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
-# check_min_version("0.15.0.dev0")
+check_min_version("0.15.0.dev0")
 
 if is_wandb_available():
     import wandb
@@ -82,7 +82,7 @@ def log_validation(validation_prompts, pipeline, args, accelerator, epoch):
             if tracker.name == "wandb":
                 tracker.log(
                     {
-                        "final-" + prompt: [
+                        prompt: [
                             wandb.Image(image, caption=f"{i}: {prompt}")
                             for i, image in enumerate(images)
                         ]
