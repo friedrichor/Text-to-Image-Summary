@@ -158,9 +158,8 @@ sh train_text_to_image_lora.sh
 
 ### **Inference**
 
-&emsp;&emsp;您可以通过 `inference_lora.ipynb` 来进行 inference，训练好的模型默认保存在 `txt2img-finetune-lora/pytorch_lora_weights.bin`。  
+&emsp;&emsp;您可以通过 `inference_lora.ipynb` 来进行 inference，训练好的模型默认保存在 `txt2img-finetune-lora/pytorch_lora_weights.bin`，生成的图片保存在 `results` 文件夹。  
 &emsp;&emsp;当然您也可以从某个 checkpoint 进行 inference，只需更改 `model_path = "txt2img-finetune-lora/checkpoint-500/pytorch_model.bin"` 即可。   
-&emsp;&emsp;生成的图片保存在 `results` 文件夹。   
 
 
 # Reference
