@@ -14,9 +14,9 @@ pip install git+https://github.com/huggingface/transformers
 - ViT-GPT2: 可参考 https://huggingface.co/nlpconnect/vit-gpt2-image-captioning
 3. 运行 `create_dataset.py` 创建数据集  
 - 默认情况下是将创建的数据集保存到本地磁盘 (直接运行这个代码即可)，然后从本地调用数据集，如果不太了解怎么将数据集上传到HuggingFace的推荐这种方式。  
-- 同时也提供了将数据集上传到 Huggingface 的代码, 设置 `--save_to_disk=True` 等，这个代码参考于 https://github.com/YaYaB/finetune-diffusion，不过目前我还没能把数据集上传到 HuggingFace，后续可能对这部分代码进行改进。
+- 同时也提供了将数据集上传到 Huggingface 的代码, 设置 `--save_to_disk=True` 等，这个代码参考于 [YaYaB/finetune-diffusion](https://github.com/YaYaB/finetune-diffusion)，不过目前我还没能把数据集上传到 HuggingFace，后续可能对这部分代码进行改进。
 
-**注意: images 所提供的图片并不足以 fine-tune Stable Diffusion，仅仅是这几张图片训练也可能使模型效果变差，这里放几张图片只是作为示例，您也可以用这几张图片来测试代码是否能跑。实际效果需以您的数据集为准。**
+**注意: images 所提供的图片并不足以 fine-tune Stable Diffusion，仅仅是这几张图片训练也可能使模型效果变差，这里放几张图片只是作为示例[，您也可以用这几张图片来测试代码是否能跑。实际效果需以您的数据集为准。**
 
 # **Fine-tuning Stable Diffusion**
 
