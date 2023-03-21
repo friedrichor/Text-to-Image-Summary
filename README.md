@@ -39,6 +39,10 @@ pip install .
 
 ## Blogs related to Stable Diffusion
 
-- [Training Stable Diffusion with Dreambooth using 🧨 Diffusers](https://huggingface.co/blog/dreambooth)
+- [From DALL·E to Stable Diffusion: how do text-to-image generation models work?](https://tryolabs.com/blog/2022/08/31/from-dalle-to-stable-diffusion)  
+作者讲解了 Diffusion Model 如何生成图像，解释了 DALL·E 2、Stable Diffusion 和 Imagen 这三种模型之间的差异所在，并从长远分析这些模型可能帮助公司和个人完成哪些实际任务。
+- [Training Stable Diffusion with Dreambooth using 🧨 Diffusers](https://huggingface.co/blog/dreambooth)  
 介绍了如何使用 Hugging Face Diffusers 提供的 Dreambooth 训练代码来 fine-tune Stabel Diffusion。作者进行了大量的实验来分析 Dreambooth 中不同参数设置的效果。这篇文章介绍了作者发现的一些技巧，可以在使用 Dreambooth fine-tune Stabel Diffusion 时改善结果。其中作者也讲解了如何使模型能够学会比较难的人脸。
+- [The guide to fine-tuning Stable Diffusion with your own images](https://tryolabs.com/blog/2022/10/25/the-guide-to-fine-tuning-stable-diffusion-with-your-own-images)  介绍了如何使用自己的数据集进行 fine-tune，讲的比较详细。
+- 
 
