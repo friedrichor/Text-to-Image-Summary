@@ -8,7 +8,7 @@ Summary of personal code for the Text-to-Image task.
 
 ## **Fine-tuning**
 
-Fine-tuning 代码主要使用 [PyTorch](https://pytorch.org/) 和 [Hugging Face](https://huggingface.co/docs) 中的各个库，思路主要来源于 [Hugging Face Diffusers](https://github.com/huggingface/diffusers)  
+Fine-tuning 代码主要使用 [PyTorch](https://pytorch.org/) 和 [Hugging Face](https://huggingface.co/docs) 中的各个库，思路主要来源于 [Hugging Face Diffusers](https://github.com/huggingface/diffusers)。  
 
 ### **Requirement**
 
@@ -21,7 +21,7 @@ diffusers>=0.15.0
 ```
 pip install git+https://github.com/huggingface/transformers
 ```
-您可以通过以下指令安装最新版(开发版)的 diffusers(>=0.15.0)
+您可以通过以下指令安装最新版(开发版)的 diffusers(>=0.15.0)。
 ```
 git clone https://github.com/huggingface/diffusers
 cd diffusers
