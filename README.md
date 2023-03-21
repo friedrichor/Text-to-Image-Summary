@@ -8,7 +8,7 @@ Summary of personal code for the Text-to-Image task.
 
 ## **Fine-tuning**
 
-Fine-tuning 代码主要使用 [PyTorch](https://pytorch.org/) 和 [Hugging Face](https://huggingface.co/docs) 中的各个库，思路主要来源于 [Hugging Face Diffusers](https://github.com/huggingface/diffusers)。  
+Fine-tuning 代码主要使用 [PyTorch](https://pytorch.org/) 和 [Hugging Face](https://huggingface.co/docs)，思路主要来源于 [Hugging Face Diffusers](https://github.com/huggingface/diffusers)。  
 
 ### **Requirement**
 
@@ -30,7 +30,7 @@ pip install .
 
 ### **text2image**
 
-[fine-tune/text2image](https://github.com/friedrichor/Text-to-Image-Summary/tree/main/fine-tune/text2image) 是正常的 fine-tune 代码，您可以通过查看其中的 README 来了解如何对 Stable Diffusion 进行 fine-tune。
+&emsp;&emsp;[fine-tune/text2image](https://github.com/friedrichor/Text-to-Image-Summary/tree/main/fine-tune/text2image) 是正常的 fine-tune 代码，您可以通过查看其中的 README 来了解如何对 Stable Diffusion 进行 fine-tune。
 
 
 ### **DreamBooth**
