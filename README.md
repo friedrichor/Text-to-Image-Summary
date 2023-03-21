@@ -36,3 +36,9 @@ pip install .
 ### **DreamBooth**
 
 &emsp;&emsp;DreamBooth 是一种个性化 text2image 模型的方法，例如给出一个物体/人物等的几张（3~5张）图像就能够 fine-tune Stable Diffusion，使模型能够“学会”这个物体，从而在后续的生成时能够更加准确地生成这个物体/人物。
+
+## Blogs related to Stable Diffusion
+
+- [Training Stable Diffusion with Dreambooth using 🧨 Diffusers](https://huggingface.co/blog/dreambooth)
+介绍了如何使用 Hugging Face Diffusers 提供的 Dreambooth 训练代码来 fine-tune Stabel Diffusion。作者进行了大量的实验来分析 Dreambooth 中不同参数设置的效果。这篇文章介绍了作者发现的一些技巧，可以在使用 Dreambooth fine-tune Stabel Diffusion 时改善结果。其中作者也讲解了如何使模型能够学会比较难的人脸。
+
