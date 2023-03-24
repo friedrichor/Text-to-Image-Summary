@@ -45,4 +45,5 @@ pip install .
 介绍了如何使用 Hugging Face Diffusers 提供的 Dreambooth 训练代码来 fine-tune Stabel Diffusion。作者进行了大量的实验来分析 Dreambooth 中不同参数设置的效果。这篇文章介绍了作者发现的一些技巧，可以在使用 Dreambooth fine-tune Stabel Diffusion 时改善结果。其中作者也讲解了如何使模型能够学会比较难的人脸。
 - [The guide to fine-tuning Stable Diffusion with your own images](https://tryolabs.com/blog/2022/10/25/the-guide-to-fine-tuning-stable-diffusion-with-your-own-images)  
 介绍了如何使用自己的数据集进行 fine-tune，讲的比较详细。
+- [How does negative prompt work?](https://stable-diffusion-art.com/how-negative-prompt-work/)  
 
