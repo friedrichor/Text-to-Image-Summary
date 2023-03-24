@@ -46,4 +46,6 @@ pip install .
 - [The guide to fine-tuning Stable Diffusion with your own images](https://tryolabs.com/blog/2022/10/25/the-guide-to-fine-tuning-stable-diffusion-with-your-own-images)  
 介绍了如何使用自己的数据集进行 fine-tune，讲的比较详细。
 - [How does negative prompt work?](https://stable-diffusion-art.com/how-negative-prompt-work/)  
-
+- [How to use negative prompts?](https://stable-diffusion-art.com/how-to-use-negative-prompts/)
+- [Beginner’s guide to inpainting (step-by-step examples)](https://stable-diffusion-art.com/inpainting_basics/)  
+如何修复图像（如人的脸部不自然，手臂缺失等等）
