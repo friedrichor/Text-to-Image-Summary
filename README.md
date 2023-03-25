@@ -49,3 +49,4 @@ pip install .
 - [How to use negative prompts?](https://stable-diffusion-art.com/how-to-use-negative-prompts/)
 - [Beginner’s guide to inpainting (step-by-step examples)](https://stable-diffusion-art.com/inpainting_basics/)  
 如何修复图像（如人的脸部不自然，手臂缺失等等）
+- [How to use VAE to improve eyes and faces](https://stable-diffusion-art.com/how-to-use-vae/)
