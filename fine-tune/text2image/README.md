@@ -89,7 +89,7 @@ accelerate config
 paper: [8-bit Optimizers via Block-wise Quantization](https://arxiv.org/abs/2110.02861#)  
 <div align=center><img src="https://github.com/friedrichor/Text-to-Image-Summary/blob/main/photos_for_readme/8-bit_Adam.png" width="50%"></div>  
 
-5. `validation_negative_prompts_dir` 中的内容是推理时所使用的 `negative_prompt`，所有内容都在一行，可参考 [How to use negative prompts?](https://stable-diffusion-art.com/how-to-use-negative-prompts/) 和 [How does negative prompt work?](https://stable-diffusion-art.com/how-negative-prompt-work/)。如果您不需要该参数，将其设定为 None(default) 即可。 
+5. `validation_negative_prompts_dir` 中的内容是推理时所使用的 `negative_prompt`，所有内容都在一行，可参考 [How to use negative prompts?](https://stable-diffusion-art.com/how-to-use-negative-prompts/) 和 [How does negative prompt work?](https://stable-diffusion-art.com/how-negative-prompt-work/)。如果您不需要该参数，将其设定为 None(default) 或将 `validation_negative_prompts.txt` 文件中的内容清空即可。 
 6. `report_to` 默认设置为 "tensorboard"，您可以通过在终端输入  
 ```
 tensorboard --logdir=text2image/txt2img-finetune-lora/logs
