@@ -45,7 +45,7 @@ export MODEL_NAME="runwayml/stable-diffusion-v1-5"
 export DATASET_DISK_PATH="datasets/Text2Image_example"
 export OUTPUT_DIR="txt2img-finetune"
 export VALID_PROMPT_DIR="validation_prompts.txt"
-export NEGATIVE_PROMPT="disfigured, ugly, bad, immature"
+export NEGATIVE_PROMPT_DIR="validation_negative_prompts.txt"
 
 accelerate launch --mixed_precision="fp16"  train_text_to_image.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
@@ -67,7 +67,7 @@ accelerate launch --mixed_precision="fp16"  train_text_to_image.py \
   --output_dir=$OUTPUT_DIR \
   --checkpointing_steps=100 \
   --validation_prompts_dir=$VALID_PROMPT_DIR \
-  --validation_negative_prompt=$NEGATIVE_PROMPT \
+  --validation_negative_prompts_dir=$NEGATIVE_PROMPT_DIR \
   --num_validation_images=4 \
   --validation_epochs=50 \
   --report_to="tensorboard"
@@ -89,7 +89,7 @@ accelerate config
 paper: [8-bit Optimizers via Block-wise Quantization](https://arxiv.org/abs/2110.02861#)  
 <div align=center><img src="https://github.com/friedrichor/Text-to-Image-Summary/blob/main/photos_for_readme/8-bit_Adam.png" width="50%"></div>  
 
-5. `validation_negative_prompt` 表示推理时所使用的 `negative_prompt`，可参考 [How to use negative prompts?](https://stable-diffusion-art.com/how-to-use-negative-prompts/) 和 [How does negative prompt work?](https://stable-diffusion-art.com/how-negative-prompt-work/)。如果您不需要该参数，将其设定为 None(default) 即可。 
+5. `validation_negative_prompts_dir` 中的内容是推理时所使用的 `negative_prompt`，所有内容都在一行，可参考 [How to use negative prompts?](https://stable-diffusion-art.com/how-to-use-negative-prompts/) 和 [How does negative prompt work?](https://stable-diffusion-art.com/how-negative-prompt-work/)。如果您不需要该参数，将其设定为 None(default) 即可。 
 6. `report_to` 默认设置为 "tensorboard"，您可以通过在终端输入  
 ```
 tensorboard --logdir=text2image/txt2img-finetune-lora/logs
@@ -127,7 +127,7 @@ export MODEL_NAME="runwayml/stable-diffusion-v1-5"
 export DATASET_DISK_PATH="datasets/Text2Image_example"
 export OUTPUT_DIR="txt2img-finetune-lora"
 export VALID_PROMPT_DIR="validation_prompts.txt"
-export NEGATIVE_PROMPT="disfigured, ugly, bad, immature"
+export NEGATIVE_PROMPT_DIR="validation_negative_prompts.txt"
 
 accelerate launch --mixed_precision="fp16" train_text_to_image_lora.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
@@ -147,7 +147,7 @@ accelerate launch --mixed_precision="fp16" train_text_to_image_lora.py \
   --output_dir=$OUTPUT_DIR \
   --checkpointing_steps=500 \
   --validation_prompts_dir=$VALID_PROMPT_DIR \
-  --validation_negative_prompt=$NEGATIVE_PROMPT \
+  --validation_negative_prompts_dir=$NEGATIVE_PROMPT_DIR \
   --num_validation_images=4 \
   --validation_epochs=50 \
   --report_to="tensorboard"
