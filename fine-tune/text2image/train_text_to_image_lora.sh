@@ -2,7 +2,7 @@ export MODEL_NAME="runwayml/stable-diffusion-v1-5"
 export DATASET_DISK_PATH="/datas/kfh/finetune_sd/text2image/datasets/Text2Image_example"
 export OUTPUT_DIR="/datas/kfh/finetune_sd/text2image/txt2img-finetune-lora"
 export VALID_PROMPT_DIR="/datas/kfh/finetune_sd/text2image/validation_prompts.txt"
-export NEGATIVE_PROMPT="disfigured, ugly, bad, immature"
+export NEGATIVE_PROMPT_DIR="/datas/kfh/finetune_sd/text2image/validation_negative_prompts.txt"
 
 accelerate launch --mixed_precision="fp16" /datas/kfh/finetune_sd/text2image/train_text_to_image_lora.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
@@ -22,7 +22,7 @@ accelerate launch --mixed_precision="fp16" /datas/kfh/finetune_sd/text2image/tra
   --output_dir=$OUTPUT_DIR \
   --checkpointing_steps=500 \
   --validation_prompts_dir=$VALID_PROMPT_DIR \
-  --validation_negative_prompt=$NEGATIVE_PROMPT \
+  --validation_negative_prompts_dir=$NEGATIVE_PROMPT_DIR \
   --num_validation_images=4 \
   --validation_epochs=50 \
   --report_to="tensorboard"
