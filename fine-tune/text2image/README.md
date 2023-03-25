@@ -88,6 +88,7 @@ accelerate config
 4. `use_8bit_adam` 表示是否使用 8-bit Adam，使用 8-bit Adam 会显著降低模型训练时所需的显存大小，并且模型效果基本不会受到影响。  
 paper: [8-bit Optimizers via Block-wise Quantization](https://arxiv.org/abs/2110.02861#)  
 <div align=center><img src="https://github.com/friedrichor/Text-to-Image-Summary/blob/main/photos_for_readme/8-bit_Adam.png" width="50%"></div>  
+
 5. `validation_negative_prompt` 表示推理时所使用的 `negative_prompt`，可参考 [How to use negative prompts?](https://stable-diffusion-art.com/how-to-use-negative-prompts/) 和 [How does negative prompt work?](https://stable-diffusion-art.com/how-negative-prompt-work/)。如果您不需要该参数，将其设定为 None(default) 即可。 
 6. `report_to` 默认设置为 "tensorboard"，您可以通过在终端输入  
 ```
