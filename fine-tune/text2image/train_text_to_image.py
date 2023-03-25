@@ -54,7 +54,7 @@ check_min_version("0.15.0.dev0")
 logger = get_logger(__name__, log_level="INFO")
 
 
-def log_validation(validation_prompts, validation_negative_prompt, unet, args, accelerator, weight_dtype, epoch):
+def log_validation(validation_prompts, negative_prompt, unet, args, accelerator, weight_dtype, epoch):
     logger.info(
         f"Running validation... \n Generating {args.num_validation_images} images with prompt:"
         f" {validation_prompts}."
@@ -77,7 +77,7 @@ def log_validation(validation_prompts, validation_negative_prompt, unet, args, a
         for idx in range(args.num_validation_images):
             with torch.autocast("cuda"):
                 images.append(pipeline(prompt=prompt,
-                                       negative_prompt=validation_negative_prompt,
+                                       negative_prompt=negative_prompt,
                                        num_inference_steps=30, 
                                        generator=generator).images[0])
             tqdm_bar.update(1)
@@ -155,7 +155,7 @@ def parse_args():
         "--validation_prompts_dir", type=str, default=None, help="The file path of prompts for validation."
     )
     parser.add_argument(
-        "--validation_negative_prompt", type=str, default=None, help="Negative prompt used for validation."
+        "--validation_negative_prompts_dir", type=str, default=None, help="The file path of negative prompts for validation."
     )
     parser.add_argument(
         "--num_validation_images",
@@ -460,6 +460,14 @@ def main():
             validation_prompts = [x.strip() for x in f.readlines()]
     else:
         validation_prompts = None
+    
+    # Read negative prompt for validation
+    if args.validation_negative_prompts_dir:
+        with open(args.validation_negative_prompts_dir, "r") as f:
+            lines = f.readlines()
+            negative_prompt = lines[0] if lines != [] else None
+    else:
+        negative_prompt = None
 
     # Handle the repository creation
     if accelerator.is_main_process:
@@ -778,7 +786,7 @@ def main():
             resume_step = resume_global_step % (num_update_steps_per_epoch * args.gradient_accumulation_steps)
     
     if args.validation_prompts_dir is not None:
-        log_validation(validation_prompts, args.validation_negative_prompt, unet, args, accelerator, weight_dtype, 0)  # 最后一个参数为0时表示为zero-shot generation
+        log_validation(validation_prompts, negative_prompt, unet, args, accelerator, weight_dtype, 0)  # 最后一个参数为0时表示为zero-shot generation
 
     # Only show the progress bar once on each machine.
     progress_bar = tqdm(range(global_step, args.max_train_steps), disable=not accelerator.is_local_main_process)
@@ -860,7 +868,7 @@ def main():
             
         if accelerator.is_main_process:
             if args.validation_prompts_dir is not None and (epoch + 1) % args.validation_epochs == 0:
-                log_validation(validation_prompts, args.validation_negative_prompt, unet, args, accelerator, weight_dtype, epoch+1)  # 这里是epoch+1，最后一个参数为0时表示为zero-shot generation
+                log_validation(validation_prompts, negative_prompt, unet, args, accelerator, weight_dtype, epoch+1)  # 这里是epoch+1，最后一个参数为0时表示为zero-shot generation
 
     # Create the pipeline using the trained modules and save it.
     accelerator.wait_for_everyone()
@@ -883,7 +891,7 @@ def main():
             
         # run inference
         if args.validation_prompts_dir is not None:
-            log_validation(validation_prompts, args.validation_negative_prompt, unet, args, accelerator, weight_dtype, -1)  # 最后一个参数为-1时表示完成全部训练后进行的inference
+            log_validation(validation_prompts, negative_prompt, unet, args, accelerator, weight_dtype, -1)  # 最后一个参数为-1时表示完成全部训练后进行的inference
 
     accelerator.end_training()
 
