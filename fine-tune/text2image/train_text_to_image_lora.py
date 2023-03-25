@@ -58,7 +58,7 @@ if is_wandb_available():
 logger = get_logger(__name__, log_level="INFO")
 
 
-def log_validation(validation_prompts, pipeline, args, accelerator, epoch):
+def log_validation(validation_prompts, validation_negative_prompt, pipeline, args, accelerator, epoch):
     logger.info(
         f"Running validation... \n Generating {args.num_validation_images} images with prompt:"
         f" {validation_prompts}."
@@ -69,7 +69,10 @@ def log_validation(validation_prompts, pipeline, args, accelerator, epoch):
     for prompt in validation_prompts:
         images = []
         for idx in range(args.num_validation_images):
-            images.append(pipeline(prompt, num_inference_steps=30, generator=generator).images[0])
+            images.append(pipeline(prompt=prompt, 
+                                   negative_prompt=validation_negative_prompt,
+                                   num_inference_steps=30, 
+                                   generator=generator).images[0])
             tqdm_bar.update(1)
             tqdm_bar.set_description(f"idx = {idx:02}, prompt = {prompt}")
         for tracker in accelerator.trackers:
@@ -177,6 +180,9 @@ def parse_args():
     )
     parser.add_argument(
         "--validation_prompts_dir", type=str, default=None, help="The file path of prompts for validation."
+    )
+    parser.add_argument(
+        "--validation_negative_prompt", type=str, default=None, help="Negative prompt used for validation."
     )
     parser.add_argument(
         "--num_validation_images",
@@ -777,7 +783,7 @@ def main():
         pipeline = pipeline.to(accelerator.device)
         pipeline.set_progress_bar_config(disable=True)
                 
-        log_validation(validation_prompts, pipeline, args, accelerator, 0)  # 最后一个参数为0时表示为zero-shot generation
+        log_validation(validation_prompts, args.validation_negative_prompt, pipeline, args, accelerator, 0)  # 最后一个参数为0时表示为zero-shot generation
         
         del pipeline
         torch.cuda.empty_cache()
@@ -872,7 +878,7 @@ def main():
                 pipeline.set_progress_bar_config(disable=True)
 
                 # run inference
-                log_validation(validation_prompts, pipeline, args, accelerator, epoch+1)  # 注意这里是epoch+1，最后一个参数为0时表示为zero-shot generation
+                log_validation(validation_prompts, args.validation_negative_prompt, pipeline, args, accelerator, epoch+1)  # 注意这里是epoch+1，最后一个参数为0时表示为zero-shot generation
                 
                 del pipeline
                 torch.cuda.empty_cache()
@@ -905,7 +911,7 @@ def main():
 
     # run inference
     if args.validation_prompts_dir is not None:
-        log_validation(validation_prompts, pipeline, args, accelerator, -1)  # 最后一个参数为-1时表示完成全部训练后进行的inference
+        log_validation(validation_prompts, args.validation_negative_prompt, pipeline, args, accelerator, -1)  # 最后一个参数为-1时表示完成全部训练后进行的inference
 
     accelerator.end_training()
 
