@@ -96,7 +96,7 @@ tensorboard --logdir=text2image/txt2img-finetune-lora/logs
 ```
 
 &emsp;&emsp;来查看训练过程中生成的图像，其中 `logdir=` 后面接的是您将 logs 保存的路径。  
-&emsp;7. 推荐 `checkpointing_steps` 和 `validation_epochs` 是一个“相对应”的关系，假设训练集中有 50 张图片，如果 `--validation_epochs=5`，表示每 5 个 epoch 就进行一次 validation，那么推荐将 `checkpointing_steps` 设置为 $50\times 50=250$，即设置 `--checkpointing_steps=250` (或者是 250 的倍数也可以)。由于训练时并不是训练的越久模型效果越好，可能突然从某个 epoch 后模型效果开始下降，validation 时生成的图像会保存在 tensorboard 中以便于查看训练过程中的效果，而保存的 checkpoint 最好是能够在 tensorboard 中能查看到效果的。
+&emsp;7. 推荐 `checkpointing_steps` 和 `validation_epochs`、`gradient_accumulation_steps` 是一个“相对应”的关系，推荐设置 $checkpointing_steps=\frac{训练集图片数量}{gradient_accumulation_steps}\times validation_epochs$。假设训练集中有 50 张图片，如果 `--validation_epochs=5` 且 `--gradient_accumulation_steps=8`，表示每 5 个 epoch 就进行一次 validation，那么推荐将 `checkpointing_steps` 设置为 $\lceil \frac{50}{8} \rceil \times 5=35$，其中 $\lceil\rceil$ 表示为向上取整，即设置 `--checkpointing_steps=35` (或者是 35 的倍数也可以)。由于训练时并不是训练的越久模型效果越好，可能突然从某个 epoch 后模型效果开始下降，validation 时生成的图像会保存在 tensorboard 中以便于查看训练过程中的效果，而保存的 checkpoint 最好是能够在 tensorboard 中能查看到效果的。
 
 ### **Inference**
 
