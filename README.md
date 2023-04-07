@@ -50,3 +50,4 @@ pip install .
 - [Beginner’s guide to inpainting (step-by-step examples)](https://stable-diffusion-art.com/inpainting_basics/)  
 如何修复图像（如人的脸部不自然，手臂缺失等等）
 - [How to use VAE to improve eyes and faces](https://stable-diffusion-art.com/how-to-use-vae/)
+- [THE OTHER LoRA TRAINING RENTRY](https://rentry.co/59xed3#is-dreambooth-useless-now) 训练技巧
