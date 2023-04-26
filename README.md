@@ -37,6 +37,8 @@ pip install .
 
 &emsp;&emsp;DreamBooth 是一种个性化 text2image 模型的方法，例如给出一个物体/人物等的几张（3~5张）图像就能够 fine-tune Stable Diffusion，使模型能够“学会”这个物体，从而在后续的生成时能够更加准确地生成这个物体/人物。
 
+准备更新……
+
 ## Blogs related to Stable Diffusion
 
 - [From DALL·E to Stable Diffusion: how do text-to-image generation models work?](https://tryolabs.com/blog/2022/08/31/from-dalle-to-stable-diffusion)  
